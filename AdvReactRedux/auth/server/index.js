@@ -22,7 +22,7 @@ mongoose.connect(
 // Any request is going to be passed into these middelware
 // app.use registers as middleware
 app.use(morgan('combined')); // logging framework
-app.use(bodyParser.json({ type: '*/* '})) // parses incoming requests into json
+app.use(bodyParser.json({ type: '*/*' })) // parses incoming requests into json
 router(app);
 
 ///////////////////
