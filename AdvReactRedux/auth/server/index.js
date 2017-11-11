@@ -5,6 +5,16 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const app = express();
 const router = require('./router');
+const mongoose = require('mongoose');
+
+///////////////////////////
+// DB setup
+mongoose.connect(
+    'mongodb://adv-react-user:advPass@ds259325.mlab.com:59325/adv-react-auth', 
+    {useMongoClient: true}
+)
+
+
 ////////////////////
 // App setup
 // Getting Express working the way we want
