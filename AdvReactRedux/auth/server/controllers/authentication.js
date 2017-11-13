@@ -6,7 +6,12 @@ function tokenForUser(user) {
     const timestamp = new Date().getTime();
     // sub stands for subject aka who this token is about
     // iat stands for issued at time
-    return jwt.encode({ sub: user.id, iat: timestamp }, config.secret);
+    return jwt.encode(
+        { 
+            sub: user.id, 
+            iat: timestamp,
+            exp: timestamp+6000
+        }, config.secret);
 }
 
 exports.signin = function(req, res, next) {
