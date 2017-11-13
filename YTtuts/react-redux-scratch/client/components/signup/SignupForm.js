@@ -49,12 +49,17 @@ class SignupForm extends React.Component {
 				isLoading: true
 			})
 			this.props.userSignupRequest(this.state)
-				.then(() => {})
+				.then(() => {
+					this.props.history.push('/')
+				})
 				.catch(err => {
-					this.setState({
-						errors: err.response.data,
-						isLoading: false
-					})
+					console.log(err)
+					if(err) {
+						this.setState({
+							errors: err.response.data,
+							isLoading: false
+						})
+					}
 				})
 		}
 	}
