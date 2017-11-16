@@ -17,11 +17,13 @@ class SignupForm extends React.Component {
 			passwordConfirmation: '',
 			timezone: '',
 			errors: {},
-			isLoading: false
+			isLoading: false,
+			invalid: false
 		}
 
 		this.onChange = this.onChange.bind(this)
 		this.onSubmit = this.onSubmit.bind(this)
+		this.checkUserExists = this.checkUserExists.bind(this);
 	}
 
 	onChange(e) {
@@ -68,6 +70,28 @@ class SignupForm extends React.Component {
 		}
 	}
 
+	checkUserExists(e) {
+		const field = e.target.name;
+		const val = e.target.value;
+		if(val !== '') {
+			this.props.isUserExists(val).then(res => {
+				let errors = this.state.errors
+				let invalid;
+				if(res.data.user) {
+					errors[field]= 'There is user with such ' + field;
+					invalid = true;
+				} else {
+					errors[field] = '';
+					invalid = false;
+				}
+				this.setState({
+					errors,
+					invalid
+				})
+			})
+		}
+	}
+
 	render() {
 		const { errors } = this.state
 		const options = map(timezones, (val, key) => {
@@ -83,6 +107,7 @@ class SignupForm extends React.Component {
 					onChange={this.onChange}
 					value={this.state.username}
 					field="username"
+					checkUserExists={this.checkUserExists}
 				/>
 
 				<TextFieldGroup
@@ -92,6 +117,7 @@ class SignupForm extends React.Component {
 					value={this.state.email}
 					field="email"
 					type="email"
+					checkUserExists={this.checkUserExists}
 				/>
 
 				<TextFieldGroup
@@ -126,7 +152,7 @@ class SignupForm extends React.Component {
 				</div>
 
 				<div className="form-group">
-					<button disabled={this.state.isLoading} className="btn btn-primary btn-lg">Sign Up</button>
+					<button disabled={this.state.isLoading || this.state.invalid } className="btn btn-primary btn-lg">Sign Up</button>
 				</div>
 			</form>
 		)
@@ -135,7 +161,8 @@ class SignupForm extends React.Component {
 
 SignupForm.propTypes = {
 	userSignupRequest: PropTypes.func.isRequired,
-	addFlashMessage: PropTypes.func.isRequired
+	addFlashMessage: PropTypes.func.isRequired,
+	isUserExists: PropTypes.func.isRequired
 }
 
 export default SignupForm
