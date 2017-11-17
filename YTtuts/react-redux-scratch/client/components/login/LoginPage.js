@@ -6,7 +6,9 @@ class LoginPage extends React.Component {
     return(
       <div className="row">
         <div className="col-md-4 col-md-offset-4">
-          <LoginForm />
+          <LoginForm 
+            history={this.props.history}
+          />
         </div>
       </div>
     ) 
