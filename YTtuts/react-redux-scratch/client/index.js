@@ -5,6 +5,10 @@ import {Provider} from 'react-redux';
 import thunk from 'redux-thunk'
 import {createStore, applyMiddleware, compose} from 'redux'
 import rootReducer from './rootReducer';
+import setAuthorizationToken from './utils/setAuthroizationToken';
+import { setCurrentUser } from './actions/authActions';
+import jwtDecode from 'jwt-decode';
+
 
 import App from './components/App';
 import Greetings from './components/Greetings';
@@ -18,6 +22,11 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()    
   )
 );
+
+if(localStorage.jwtToken) {
+  setAuthorizationToken(localStorage.jwtToken)
+  store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)));
+}
 
 render(
   <Provider store={store}>
