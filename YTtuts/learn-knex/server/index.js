@@ -69,6 +69,19 @@ app.put('/todos/:id', (req, res) => {
     })
 })
 
+app.delete('/todos/:id', (req, res) => {
+  // knex.raw('delete from todos where id = ?', [req.params.id]);
+  knex('todos')
+    .where('id', req.params.id)
+    .delete()
+    .then(() => {
+      knex.select().from('todos')
+        .then(todos => {
+          res.json(todos);
+        })
+    })
+})
+
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`)
 })
