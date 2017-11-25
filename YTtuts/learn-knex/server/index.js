@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import knex from '../db/knex';;
+import knex from '../db/knex';
+import knex_populate from 'knex-populate';
 
 const PORT = process.env.PORT || 3000,
       app  = express();
@@ -34,13 +35,24 @@ app.get('/todos/:id', (req, res) => {
 app.get('/todos-of-user/:id', (req, res) => {
   // knex.raw('select * from todos inner join users on todos.user_id = users.id where todos.user_id = ?', [req.params.id])
   //   .then(todos => res.json(todos.rows))
-  knex.from('todos')
-      .innerJoin('users', 'todos.user_id', 'users.id')
-      .where('todos.user_id', req.params.id)
-      .then(todos => {
-        res.json(todos)
-      })
+  // knex.from('todos')
+  //     .innerJoin('users', 'todos.user_id', 'users.id')
+  //     .where('todos.user_id', req.params.id)
+  //     .then(todos => {
+  //       res.json(todos)
+  //     })
 
+
+  // with populate  similar to postgres row_to_json
+  knex_populate(knex, 'users')
+      // .find({
+      //   id: req.params.id
+      // })
+      .findById(req.params.id)
+      .populate('todos', 'user_id', 'user_todos')
+      .limitTo(1)
+      .exec()
+      .then(results => res.json(results))
 })
 
 app.post('/todos', (req, res) => {
