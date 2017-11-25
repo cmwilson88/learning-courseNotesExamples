@@ -25,6 +25,28 @@ app.get('/todos', (req, res) => {
     })
 })
 
+app.post('/todos', (req, res) => {
+  // knex.raw('insert into todos(title, user_id) values(?, ?)', ['go play some sports', '1'])
+  //   .then(() => {
+  //     knex.select().from('todos')
+  //       .then(todos => {
+  //         res.json(todos)
+  //       })
+  //   })
+  //   .catch(err => {
+  //     console.log(err)
+  //   })
+  knex('todos').insert({
+    title: 'go play some shortcut sports',
+    user_id: 1
+  }).then(() => {
+    knex.select().from('todos')
+      .then(todos => {
+        res.json(todos)
+      })
+  })
+})
+
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`)
 })
