@@ -19,6 +19,8 @@ app.get('/todos', (req, res) => {
   })
 })
 
+
+
 app.get('/todos/:id', (req, res) => {
   // knex.raw('select * from todos where id = 1').then(todo => {
   //   res.json(todo.rows)
