@@ -30,6 +30,19 @@ app.get('/todos/:id', (req, res) => {
     })
 })
 
+// Joins
+app.get('/todos-of-user/:id', (req, res) => {
+  // knex.raw('select * from todos inner join users on todos.user_id = users.id where todos.user_id = ?', [req.params.id])
+  //   .then(todos => res.json(todos.rows))
+  knex.from('todos')
+      .innerJoin('users', 'todos.user_id', 'users.id')
+      .where('todos.user_id', req.params.id)
+      .then(todos => {
+        res.json(todos)
+      })
+
+})
+
 app.post('/todos', (req, res) => {
   // knex.raw('insert into todos(title, user_id) values(?, ?)', ['go play some sports', '1'])
   //   .then(() => {
