@@ -1,0 +1,39 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+
+  box-shadow: 0 3rem 5rem rgba($color-black, .1);
+  background-color: $color-white;
+  border-radius: 3px;
+  padding: 6rem;
+  // 6rem + 3rem from transform on shape
+  padding-left: 9rem;
+  font-size: $default-font-size;
+
+  transform: skewX(-12deg);
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    // Defines where content floats around the element
+    // Requires element to have width, height, and to be floated
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+
+    // Use transform to move around floated objects
+    // Not margins
+    transform: translateX(-3rem) skew(12deg);
+  }
+
+  &__image {
+    // Image is wider than height so we should use height to make it fit
+    height: 100%;
+  }
+
+  &__text {
+    transform: skew(12deg);
+  }
+}
