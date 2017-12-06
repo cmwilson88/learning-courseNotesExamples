@@ -17,6 +17,10 @@
     width: 90%;
     display: block;
     transition: all 300ms;
+
+    @include respond(tab-port) {
+      width: 100%;
+    }
     
     &:focus {
       outline: none;
@@ -48,16 +52,21 @@
     visibility: hidden;
     transform: translateY(-4rem);
   }
-
+  
   &__radio-group {
     width: 49%;
     display: inline-block;
+
+    @include respond(tab-port) {
+      width: 100%;
+      margin-bottom: 3rem;
+    }
   }
 
   &__radio-input {
     display: none;
   }
-
+  
   &__radio-label {
     position: relative;
     font-size: $default-font-size;
@@ -74,6 +83,7 @@
     position: absolute;
     left: 0;
     top: -.4rem;
+
 
 
     &::after {
