@@ -28,6 +28,16 @@
     width: 33.333333%;
     display: table-cell;
     vertical-align: middle;
+    
+    @include respond(tab-land) {
+      display: block;
+      position: relative;
+      width: 100%;
+      height: 35vh;
+    }
+    @include respond(tab-port) {
+      display: none;
+    }
   }
 
   &__right {
@@ -36,11 +46,33 @@
     vertical-align: middle;
     padding: 3rem 5rem;
     backface-visibility: hidden;
+    
+    @include respond(tab-land) {
+      display: block;
+      width: 90%;
+      margin: 0 auto;
+      padding: 1.5rem 3.5rem;
+    }
+
+    @include respond(tab-port) {
+      width: 85%;
+    }
+
+    @include respond(phone) {
+      width: 95%;
+    }
   }
 
   &__img {
     display: block;
     width: 100%;
+
+    @include respond(tab-land) {
+      float: left;
+      height: 100%;
+      width: 50%;
+    }
+
   }
 
   &__text {

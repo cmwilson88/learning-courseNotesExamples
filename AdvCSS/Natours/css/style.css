@@ -622,15 +622,41 @@ body {
     width: 33.333333%;
     display: table-cell;
     vertical-align: middle; }
+    @media (max-width: 75em) {
+      .popup__left {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 35vh; } }
+    @media (max-width: 56.25em) {
+      .popup__left {
+        display: none; } }
   .popup__right {
     width: 66.6666667%;
     display: table-cell;
     vertical-align: middle;
     padding: 3rem 5rem;
     backface-visibility: hidden; }
+    @media (max-width: 75em) {
+      .popup__right {
+        display: block;
+        width: 90%;
+        margin: 0 auto;
+        padding: 1.5rem 3.5rem; } }
+    @media (max-width: 56.25em) {
+      .popup__right {
+        width: 85%; } }
+    @media (max-width: 37.5em) {
+      .popup__right {
+        width: 95%; } }
   .popup__img {
     display: block;
     width: 100%; }
+    @media (max-width: 75em) {
+      .popup__img {
+        float: left;
+        height: 100%;
+        width: 50%; } }
   .popup__text {
     font-size: 1.4rem;
     margin-bottom: 4rem;
