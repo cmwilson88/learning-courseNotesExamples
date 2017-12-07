@@ -24,6 +24,9 @@
 }
 
 .sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: var(--color-grey-dark-1);
 
   // Don't want it to grow, no shrink, basis 18% of parent width
@@ -32,7 +35,10 @@
 
 .hotel-view {
   background-color: #fff;
+  
+  //test
   background-color: orangered;
+  height: 80rem;
   
   // Take up remaining space
   flex: 1
