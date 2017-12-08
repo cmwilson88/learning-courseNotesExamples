@@ -43,6 +43,7 @@
 
 .detail {
   display: flex;
+  flex-wrap: wrap;
   font-size: 1.4rem;
   padding: 4.5rem;
   background-color: var(--color-grey-light-1);
