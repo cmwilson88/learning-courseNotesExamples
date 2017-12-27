@@ -4,7 +4,14 @@ exports[`Gift renders properly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Gift />,
+  Symbol(enzyme.__unrendered__): <Gift
+    gift={
+        Object {
+            "id": 1,
+          }
+    }
+    removeGift={[Function]}
+/>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -51,6 +58,17 @@ ShallowWrapper {
                     onChange={[Function]}
           />
 </FormGroup>,
+        <Button
+          active={false}
+          block={false}
+          bsClass="btn"
+          bsStyle="default"
+          className="btn-remove"
+          disabled={false}
+          onClick={[Function]}
+>
+          Remove Gift
+</Button>,
       ],
       "componentClass": "form",
       "horizontal": false,
@@ -164,6 +182,24 @@ ShallowWrapper {
         ],
         "type": [Function],
       },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "active": false,
+          "block": false,
+          "bsClass": "btn",
+          "bsStyle": "default",
+          "children": "Remove Gift",
+          "className": "btn-remove",
+          "disabled": false,
+          "onClick": [Function],
+        },
+        "ref": null,
+        "rendered": "Remove Gift",
+        "type": [Function],
+      },
     ],
     "type": [Function],
   },
@@ -207,6 +243,17 @@ ShallowWrapper {
                         onChange={[Function]}
             />
 </FormGroup>,
+          <Button
+            active={false}
+            block={false}
+            bsClass="btn"
+            bsStyle="default"
+            className="btn-remove"
+            disabled={false}
+            onClick={[Function]}
+>
+            Remove Gift
+</Button>,
         ],
         "componentClass": "form",
         "horizontal": false,
@@ -318,6 +365,24 @@ ShallowWrapper {
               "type": [Function],
             },
           ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "active": false,
+            "block": false,
+            "bsClass": "btn",
+            "bsStyle": "default",
+            "children": "Remove Gift",
+            "className": "btn-remove",
+            "disabled": false,
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": "Remove Gift",
           "type": [Function],
         },
       ],
