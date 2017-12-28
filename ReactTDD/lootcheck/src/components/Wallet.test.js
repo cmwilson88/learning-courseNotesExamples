@@ -12,10 +12,6 @@ describe('Wallet', () => {
     expect(wallet).toMatchSnapshot();
   });
 
-  it('maps state to props', () => {
-    const stateFromStore = 5;
-    expect(wallet.)
-  })
 
   it('displays a balance from props', () => {
     expect(wallet.find('.balance').text()).toEqual('Wallet balance: 20')
