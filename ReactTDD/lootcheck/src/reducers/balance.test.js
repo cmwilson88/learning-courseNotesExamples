@@ -3,6 +3,13 @@ import * as constants from '../actions/constants';
 
 describe('balanceReducer', () => {
   
+  it('returns state if no action or action.type', () => {
+    const initialState = 5
+
+    expect(balanceReducer(initialState, {}))
+      .toEqual(initialState)
+  })
+
   it('sets a balance', () => {
     const balance = 10;
 
