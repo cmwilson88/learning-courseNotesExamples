@@ -8,18 +8,49 @@
 // Example:
 //   fib(4) === 3
 
-// Video Iterative
-function fib(n) {
-  const result = [0, 1]
+
+// // Video solution - Recursive
+// // Exponential run time (O(2 * N))
+// // fib(5) runs 17 times.  fib(6) runs 27 times
+// // Can we improve it?
+// // Use Memoization to reduce duplicate function calls
+// // Store the arguments of each function call along with the result.
+// // If the function is called again wtiht the same arguments,
+// // return the precomputed result, rather than running the function again
+// function fib(n) {
+//   if(n < 2) {
+//     return n
+//   }
   
-  for(let i = 2; i <= n; i++) {
-    const a = result[i-1];
-    const b = result[i-2];
-    result.push(a+b);
+//   return fib(n-1) + fib(n-2)
+// }
+
+/////////////////////////////
+// MEMOIZATION PROCESS
+/////////////////////////////
+function memoize(fn) {
+  const cache = {};
+  return function(...args) {
+    if(cache[args]) {
+      return cache[args]
+    }
+    
+    const result = fn.apply(this, args);
+    cache[args] = result;
+
+    return result
   }
-  
-  return result[n];
 }
+
+function fib(n) {
+  if(n<2) {
+    return n
+  }
+
+  return fib(n-1) + fib(n-2);
+}
+
+fib = memoize(fib);
 
 module.exports = fib;
 
@@ -31,4 +62,31 @@ module.exports = fib;
 //   }
   
 //   return series[series.length-1]
+// }
+
+// Video Iterative
+// function fib(n) {
+//   const result = [0, 1]
+  
+//   for(let i = 2; i <= n; i++) {
+//     const a = result[i-1];
+//     const b = result[i-2];
+//     result.push(a+b);
+//   }
+  
+//   return result[n];
+// }
+
+
+///////////////////////////////////////////////////////
+
+// // First attempt recursive
+// function fib(n, current=1, prev=1) {
+//   if(n <= 2) {
+//     return current
+//   }
+//   let tempPrev = prev;
+//   prev = current;
+//   current += tempPrev
+//   return fib(n-1, current, prev)
 // }
