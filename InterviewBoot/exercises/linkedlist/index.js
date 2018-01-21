@@ -3,7 +3,7 @@
 // See 'directions' document
 
 class Node {
-  constructor(data, next=null) {
+  constructor(data, next = null) {
     this.data = data;
     this.next = next;
   }
@@ -15,16 +15,16 @@ class LinkedList {
   }
 
   insertFirst(data) {
-    this.head = new Node(data, this.head)
+    this.head = new Node(data, this.head);
   }
 
   size() {
     let counter = 0;
     let node = this.head;
 
-    while(node) {
-      counter++;
-      node=node.next;
+    while (node) {
+      counter += 1;
+      node = node.next;
     }
 
     return counter;
@@ -35,19 +35,25 @@ class LinkedList {
   }
 
   getLast() {
-    if(!this.head) {
+    if (!this.head) {
       return null;
     }
 
     let node = this.head;
-    while(node) {
-      if(!node.next) {
-        return node
+    while (node) {
+      if (!node.next) {
+        return node;
       }
-      node = node.next 
+      node = node.next;
     }
 
     return node;
+  }
+
+  clear() {
+    if (this.head) {
+      this.head = null;
+    }
   }
 }
 
