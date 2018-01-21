@@ -93,6 +93,21 @@ class LinkedList {
       this.insertFirst(data);
     }
   }
+
+  getAt(integer) {
+    let node = this.head;
+    let counter = 0;
+
+    while (node) {
+      if (counter === integer) {
+        return node;
+      }
+      counter += 1;
+      node = node.next;
+    }
+
+    return null;
+  }
 }
 
 module.exports = { Node, LinkedList };
