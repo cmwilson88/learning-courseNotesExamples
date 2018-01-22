@@ -148,6 +148,15 @@ class LinkedList {
       counter += 1;
     }
   }
+
+  // Defines a generator function
+  * [Symbol.iterator]() {
+    let node = this.head;
+    while (node) {
+      yield node;
+      node = node.next;
+    }
+  }
 }
 
 module.exports = { Node, LinkedList };
